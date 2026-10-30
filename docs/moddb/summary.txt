@@ -1,0 +1,1 @@
+A client-side journal replacement with a bookshelf, animated books, bookmarks and a tapestry gallery.

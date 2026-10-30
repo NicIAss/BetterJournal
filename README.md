@@ -1,62 +1,70 @@
 # BetterJournal
 
-<img src="modicon.png" width="128" alt="BetterJournal screenshot icon">
-
-**Give your discoveries a home.**
-
-BetterJournal replaces Vintage Story's journal list with a bookshelf of collected stories and a separate tapestry gallery. Open a book, turn its pages, and pick up where you left off.
+BetterJournal replaces Vintage Story's journal list with a bookshelf, animated books and a separate tapestry gallery. It displays the vanilla and modded lore your player has recovered through the normal journal.
 
 By **NiclAss** · **Client-side only** · **Vintage Story 1.22.7** · **MIT**
 
-The first public version, **v0.1.0**, is prepared and awaiting final in-game testing. It has not been published yet.
+Version **0.1.0** is prepared for its first public release. Publication is still pending.
 
-![A bookshelf of collected vanilla and modded stories, with fragment counts and unread markers](docs/images/bookshelf.png)
+![The bookshelf showing collected stories, fragment counts and unread markers](docs/images/bookshelf.png)
 
 ## Features
 
-- **A bookshelf for your stories.** Collected journal entries become textured books with readable spines. Fragment counts show how much of a story you have recovered when its total is known.
-- **Books that feel like books.** Animated covers and page turns, portrait pages, adjustable text size, and no scrolling through long entries. Turn pages with buttons, arrow keys or a horizontal swipe.
-- **Find your place again.** NEW markers highlight unread recovered fragments. Reading positions and bookmarks help you return to unfinished stories, and Next unread takes you straight to unread text.
-- **A tapestry collection.** Browse artwork and recovered lore in their own gallery. Intact pieces you have seen fill in the picture; missing pieces remain hidden. Rotten pieces do not add progress.
-- **Vanilla and modded lore.** Supports entries delivered through the game's normal journal, including lore from mods such as BetterRuins. No server installation is needed.
-- **A familiar look.** Uses the game's installed book materials, paper, shaded windows and buttons, with animated transitions between views.
+- Collected journal entries become books with readable spines and recovered-fragment counts when a reliable total is available.
+- Books have animated covers and page turns. Long entries use fitted pages instead of scrolling, with adjustable text size.
+- Turn pages with buttons, arrow keys or a horizontal swipe.
+- NEW markers, bookmarks, saved reading positions and Next unread help you return to unfinished stories.
+- The tapestry gallery remembers intact pieces you look at and displays recovered lore beside the artwork. Unseen pieces stay hidden; looking at rotten pieces adds no new progress.
+- Supports vanilla lore and modded entries delivered through the normal journal, including BetterRuins. Install it on your client; the server does not need the mod.
+- Uses the game's installed book textures, paper, window backgrounds and buttons.
 
-## A closer look
+## Screenshots
 
-### Read your collected stories
+![An open book displaying recovered BetterRuins lore](docs/images/book-reader.png)
 
-Long fragments flow across fitted, numbered pages. Change the text size without moving the surrounding artwork and controls.
+![Collected tapestry artwork and piece counts](docs/images/tapestry-gallery.png)
 
-![An open book displaying recovered BetterRuins lore on two readable pages](docs/images/book-reader.png)
+![Banner of the Forlorn Hope beside its recovered lore](docs/images/tapestry-reader.png)
 
-### Build your tapestry collection
-
-The gallery remembers individual intact pieces and keeps tapestry lore separate from the bookshelf. Completed discoveries can show the same NEW marker as books.
-
-![The tapestry gallery showing collected mosaics and piece counts](docs/images/tapestry-gallery.png)
-
-### Explore the lore behind the artwork
-
-Open a tapestry to see its discovered image beside the journal lore you have recovered. Longer notes are divided into reading pages.
-
-![Banner of the Forlorn Hope displayed beside its recovered lore](docs/images/tapestry-reader.png)
-
-Screenshots show an in-game collection and include modded lore. BetterJournal does not grant the completed collection shown here; it displays your own discoveries. Some screenshots precede the final tapestry-name correction.
+These screenshots show an existing collection, including modded lore. Your collection depends on your own discoveries. Some images precede the final tapestry-name correction.
 
 ## Installation
 
 1. Download `betterjournal-0.1.0.zip` from [GitHub Releases](https://github.com/NicIAss/BetterJournal/releases) once published.
 2. Put the ZIP in your Vintage Story profile's `Mods` folder. Keep it zipped.
-3. Start **Vintage Story 1.22.7**, enter a world or server, and press **J**, or your remapped journal key.
+3. Start **Vintage Story 1.22.7**, enter your world or server, and press **J**, or your remapped journal key.
 
-Install it on your **client only**. The server does not need BetterJournal. Remove older versions before updating. If you used a **Lore Bookshelf development build**, remove that ZIP too; do not load both journal replacements together. Its progress imports automatically.
+You can install it in an existing singleplayer or multiplayer world. No new world or unexplored chunks are required. Remove older BetterJournal versions and any Lore Bookshelf development ZIP first; do not run both journal replacements together. Development progress imports automatically.
+
+## Progress and compatibility
+
+| Situation | What happens |
+| --- | --- |
+| You install it after recovering some book fragments | Those fragments are available immediately. Missing story fragments remain missing. Vanilla does not supply prior reading history, so existing entries initially show NEW. |
+| You already have tapestry lore in the vanilla journal | The matching standard tapestry is shown as complete with that received lore. Alternate artwork sharing the same lore still needs to be looked at separately. |
+| You only looked at part of a tapestry before installation | Vanilla has no individual-piece viewing history for BetterJournal to import. Look at those intact pieces again to record them. This also applies to designs with no journal lore. |
+| You find pieces while BetterJournal is installed | Each intact piece you look at is remembered for that world/player. Pieces can come from different copies of a design. Completing the remembered picture does not itself grant lore; the normal discovery rules still apply. |
+| You look at rotten pieces | The observer ignores them. Previously recorded pieces or already received lore are retained; history is not revoked if cloth later rots or disappears. |
+| You remove the mod | The vanilla journal returns on the next game start. Normal lore discoveries, existing tapestries, world blocks and items are unchanged. BetterJournal's local history files remain. |
+| You reinstall in the same profile | Unchanged reading history and recorded pieces return if the local files remain. Lore received through the normal journal while the mod was absent appears too; new content starts unread. Partial pieces only looked at during that absence are not tracked. |
+| You delete BetterJournal's local data | Bookmarks, viewing history and extra piece memories reset. Vanilla lore remains and can still restore matching standard tapestry artwork. |
+
+The normal game grants tapestry lore when you look at a complete, intact assembly. Remembering pieces in the gallery does not unlock its story. A complete gallery image can therefore have no recovered lore yet. Designs with no assigned lore remain artwork only.
+
+NEW records text that has been displayed, not whether you actually read it. A started story can keep its bookmark while fragments are missing or its total is unknown. Moving to a different computer/profile does not automatically move this history.
+
+Progress lives in `ModData/betterjournal/` under the active game profile, separately for each world and player. The mod writes no lore progress into the server journal. See [progress and migration](docs/PROGRESS.md) for the exact storage and compatibility behavior.
+
+Other journal replacements can compete for the same shortcut. Independent lore systems and custom tapestry renderers may need an adapter. Removing a lore mod may leave saved journal records whose text or artwork needs that mod's assets. BetterJournal displays what the normal journal still contains; it does not supply missing mod assets. Changed text, translations or identities can appear unread again.
+
+The supported target is **1.22.7**. Other game versions are not validated. First-time fitting of long entries or a new text size can still cause a brief hitch.
 
 ## Controls
 
 | Action | Control |
 | --- | --- |
 | Open or close the journal | J, or your existing journal binding |
-| Switch collection | Books / Tapestries buttons |
+| Switch collection | Books / Tapestries |
 | Open an entry | Click a book spine or tapestry |
 | Turn pages / browse collection | Previous / Next or left/right arrows |
 | Swipe a book page | Drag horizontally across the paper |
@@ -65,23 +73,14 @@ Install it on your **client only**. The server does not need BetterJournal. Remo
 | Return to the collection | Back or Escape |
 | Close from the collection | Escape, J or the close button |
 
-## Progress and compatibility
+## Development
 
-BetterJournal keeps the game's normal journal discoveries and networking. It adds no stories and reveals only received lore. Unfamiliar mod chapters remain readable in books; independent lore databases or other journal replacements may need an adapter.
-
-Reading history, bookmarks and tapestry memories are saved locally in `ModData/betterjournal/`, separately for each world and player. Uninstalling the mod does not remove vanilla discoveries. Progress does not automatically transfer to another computer. See [saved progress and migration](docs/PROGRESS.md) for details.
-
-**NEW** tracks text that has been displayed, not whether you actually read it. Existing journal entries initially appear unread. A started story with missing fragments can keep its bookmark after you have read everything currently available. Entries without a reliable catalogue total show an unknown total.
-
-The release targets **1.22.7**. Other game versions are not yet validated. First-time fitting of long entries can still cause a brief hitch; fitted layouts and animation textures are reused to reduce repeated work.
-
-## Feedback and development
-
-Found a problem? [Open an issue](https://github.com/NicIAss/BetterJournal/issues) with your game/mod versions, reproduction steps, relevant mods and screenshots.
+[Report an issue](https://github.com/NicIAss/BetterJournal/issues) with your game/mod versions, reproduction steps, relevant mods and screenshots.
 
 - [Build from source](docs/DEVELOPING.md)
 - [Validation status](VALIDATION.md)
 - [Changelog](CHANGELOG.md)
 - [Release notes](docs/releases/v0.1.0.md)
+- [Prepared ModDB description](docs/moddb/description.html)
 
 Original code is licensed under [MIT](LICENSE). Game content shown in screenshots belongs to its respective creators; see [third-party notices](THIRD_PARTY_NOTICES.md).

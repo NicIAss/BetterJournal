@@ -4,7 +4,7 @@ Target: Vintage Story **1.22.7**, .NET 10. Prepared for the first public release
 
 ## Automated checks
 
-The release build passes all **131 checks** against the installed 1.22.7 game assemblies and assets, with zero compiler warnings/errors. Coverage includes:
+The release build passes all **137 checks** against the installed 1.22.7 game assemblies and assets, with zero compiler warnings/errors. Coverage includes:
 
 - Vanilla and arbitrary mod-added journal entries, localization, rich text, page breaks and updates.
 - Fitted pagination with complete word retention and formatting/link preservation.
@@ -16,6 +16,7 @@ The release build passes all **131 checks** against the installed 1.22.7 game as
 - Source-based tapestry routing, duplicate suppression, default/reordered/colliding IDs and full/incremental protobuf journal messages.
 - Specific Rotbeast naming rather than the broader Rot wildcard, plus mod-domain/exact translation precedence.
 - BetterJournal name migration from development ModData, backup-only discoveries, authoritative newer saves and older ModConfig fallback.
+- Existing-world installation, no retroactive partial/alternate observations, complete remembered artwork without a new lore grant, uninstall/reinstall storage round trips, discoveries received while absent, dormant reading history and a local-only progress reset.
 
 Game files are used locally for checks and are not packaged or uploaded. The normal player profile/worlds are not used by the automated suite.
 
@@ -28,3 +29,9 @@ The last automated tapestry regressions reproduce the duplicate/mismatched-chapt
 The mod remains client-side and reads the game's received journal. The server journal and discovery records are never rewritten. Local saves retain schema version 1. Unknown mod lore stays accessible; missing lore is never read from the catalogue into the UI.
 
 A first fit of long content or a new text size can still hitch on the game thread. Reusing layouts and existing text/control elements reduces repeated work; this is not a guarantee of flat frame times.
+
+## Description review
+
+The README, release notes, metadata summary and prepared ModDB page use plain feature sentences. Existing-world and uninstall claims were checked against the installed vanilla tapestry discovery code, the client integration and the local storage/projection code. No runtime discovery or uninstall behavior needed changing for these documented scenarios.
+
+Six lifecycle regression checks exercise the projections and actual local file save/load operations; they do not simulate a complete running server or prove all third-party mod combinations compatible. The ModDB preview was checked in a browser at its default desktop width: all four supplied screenshots and three button icons loaded, the page had no horizontal overflow, and collapsible sections opened/closed. The actual ModDB editor/sanitizer and a narrow viewport were not tested. Public screenshot URLs depend on the currently private GitHub repository becoming public at release time.

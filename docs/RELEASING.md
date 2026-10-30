@@ -25,4 +25,4 @@ Do not install the old Lore Bookshelf mod alongside this candidate.
 4. Make the repository public when approved, create tag `v0.1.0` at the tested commit, and publish a GitHub release using `docs/releases/v0.1.0.md`.
 5. Attach `betterjournal-0.1.0.zip` and `betterjournal-0.1.0.zip.sha256`. GitHub supplies source archives for the tag.
 
-The mod database description will be prepared separately using NiclAss's supplied design. The README screenshots already live under `docs/images/`.
+The prepared ModDB fragment is `docs/moddb/description.html`, with a short summary and local preview beside it. It uses NiclAss's supplied page design. Its public screenshot URLs reference `docs/images/` in this repository; make the repository public before publishing the ModDB description so those URLs resolve for players. The preview uses local images and works before publication.

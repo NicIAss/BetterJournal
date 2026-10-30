@@ -177,4 +177,5 @@ SavedDataChecks.Run(Check);
 PerformanceChecks.Run(Check);
 TapestryRoutingChecks.Run(Check);
 BrandingMigrationChecks.Run(Check);
+ExistingWorldChecks.Run(Check);
 Console.WriteLine($"{checks} checks passed against installed game types.");
