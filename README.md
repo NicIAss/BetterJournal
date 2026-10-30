@@ -40,7 +40,7 @@ You can install it in an existing singleplayer or multiplayer world. No new worl
 
 | Situation | What happens |
 | --- | --- |
-| You install it after recovering some book fragments | Those fragments are available immediately. Missing story fragments remain missing. Vanilla does not supply prior reading history, so existing entries initially show NEW. |
+| You install it after recovering some book fragments | Those fragments are available immediately. Missing story fragments remain missing. Without saved BetterJournal history, existing entries initially show NEW because vanilla does not supply prior reading history. |
 | You already have tapestry lore in the vanilla journal | The matching standard tapestry is shown as complete with that received lore. Alternate artwork sharing the same lore still needs to be looked at separately. |
 | You only looked at part of a tapestry before installation | Vanilla has no individual-piece viewing history for BetterJournal to import. Look at those intact pieces again to record them. This also applies to designs with no journal lore. |
 | You find pieces while BetterJournal is installed | Each intact piece you look at is remembered for that world/player. Pieces can come from different copies of a design. Completing the remembered picture does not itself grant lore; the normal discovery rules still apply. |
