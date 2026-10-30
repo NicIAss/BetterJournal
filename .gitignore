@@ -1,0 +1,11 @@
+bin/
+obj/
+work/
+dist/
+**/bin/
+**/obj/
+.vs/
+.idea/
+*.user
+*.suo
+*.log

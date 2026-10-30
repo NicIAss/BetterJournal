@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><OutputType>Exe</OutputType><TargetFramework>net10.0</TargetFramework><ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable>
+    <GamePath Condition="'$(GamePath)' == ''">$(VINTAGE_STORY)</GamePath>
+  </PropertyGroup>
+  <ItemGroup>
+    <AssemblyMetadata Include="GamePath" Value="$(GamePath)" />
+    <ProjectReference Include="..\BetterJournal.csproj" />
+    <Reference Include="VintagestoryAPI"><HintPath>$(GamePath)\VintagestoryAPI.dll</HintPath></Reference>
+    <Reference Include="VSSurvivalMod"><HintPath>$(GamePath)\Mods\VSSurvivalMod.dll</HintPath></Reference>
+    <Reference Include="cairo-sharp"><HintPath>$(GamePath)\Lib\cairo-sharp.dll</HintPath></Reference>
+    <Reference Include="Newtonsoft.Json"><HintPath>$(GamePath)\Lib\Newtonsoft.Json.dll</HintPath></Reference>
+    <Reference Include="protobuf-net"><HintPath>$(GamePath)\Lib\protobuf-net.dll</HintPath></Reference>
+  </ItemGroup>
+</Project>

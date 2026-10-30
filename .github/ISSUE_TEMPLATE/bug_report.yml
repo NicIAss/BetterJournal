@@ -1,0 +1,33 @@
+name: Bug report
+description: Report a problem with BetterJournal.
+title: "[Bug] "
+body:
+  - type: input
+    id: versions
+    attributes:
+      label: Versions
+      description: BetterJournal version and Vintage Story version.
+    validations:
+      required: true
+  - type: dropdown
+    id: mode
+    attributes:
+      label: Where does it happen?
+      options:
+        - Singleplayer
+        - Multiplayer
+        - Both
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: Include what you expected, steps to reproduce and relevant screenshots.
+    validations:
+      required: true
+  - type: textarea
+    id: mods
+    attributes:
+      label: Relevant mods and log errors
+      description: Include lore, tapestry or journal mods, and errors mentioning BetterJournal.

@@ -1,0 +1,11 @@
+name: Feature request
+description: Suggest an improvement to BetterJournal.
+title: "[Idea] "
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: What would you like to improve?
+      description: Describe the problem and how your suggestion would help.
+    validations:
+      required: true

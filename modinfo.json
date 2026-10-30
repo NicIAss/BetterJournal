@@ -1,0 +1,19 @@
+{
+  "type": "code",
+  "modid": "betterjournal",
+  "name": "BetterJournal",
+  "authors": [
+    "NiclAss"
+  ],
+  "description": "Give your discoveries a home: an animated bookshelf, readable books, bookmarks, and a tapestry gallery. Supports vanilla and modded journal lore. Client-side only.",
+  "version": "0.1.0",
+  "website": "https://github.com/NicIAss/BetterJournal",
+  "iconpath": "modicon.png",
+  "side": "client",
+  "requiredOnClient": false,
+  "requiredOnServer": false,
+  "dependencies": {
+    "game": "1.22.7",
+    "survival": "1.22.7"
+  }
+}

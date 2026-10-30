@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Version>0.1.0</Version>
+    <Authors>NiclAss</Authors>
+    <Copyright>Copyright (c) 2026 NiclAss</Copyright>
+    <RepositoryUrl>https://github.com/NicIAss/BetterJournal</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <GamePath Condition="'$(GamePath)' == ''">$(VINTAGE_STORY)</GamePath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="VintagestoryAPI"><HintPath>$(GamePath)\VintagestoryAPI.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="VSSurvivalMod"><HintPath>$(GamePath)\Mods\VSSurvivalMod.dll</HintPath><Private>false</Private></Reference>
+    <Reference Include="cairo-sharp"><HintPath>$(GamePath)\Lib\cairo-sharp.dll</HintPath><Private>false</Private></Reference>
+    <Compile Remove="tests\**;work\**" />
+    <None Update="modinfo.json;modicon.png;assets\**" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+  <Target Name="CheckGamePath" BeforeTargets="ResolveReferences">
+    <Error Condition="!Exists('$(GamePath)\VintagestoryAPI.dll')" Text="Set GamePath to the Vintage Story 1.22.7 installation directory." />
+  </Target>
+</Project>
