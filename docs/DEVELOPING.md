@@ -23,8 +23,8 @@ Some checks inspect the installed game assets and assemblies, including all vani
 - `BookMotion.cs`, `BookPose.cs`, `WindowMotion.cs`: animated books and window transitions.
 - `JournalBooks.cs`, `BookPagination.cs`, `PageLayoutCache.cs`: received lore projection and fitted pages.
 - `LoreCatalogue.cs`, `TapestryCollection.cs`: lore identity, mosaics, names and gallery routing.
-- `ReadingProgress.cs`, `ReadingExposure.cs`, `SavedDataFile.cs`, `LegacyProgress.cs`: reading history, visibility rules, atomic files and migration.
-- `tests/`: compatibility, pagination, animation, persistence, migration and tapestry regression checks.
+- `ReadingProgress.cs`, `ReadingExposure.cs`, `SavedDataFile.cs`: reading history, visibility rules and atomic files.
+- `tests/`: compatibility, pagination, animation, persistence and tapestry regression checks.
 
 The integration reads the private `ModJournal.ownJournal` field because the targeted game does not expose a public client-journal getter. It retains the normal discovery/networking systems and restores the previous journal hotkey handler when leaving a world. If integration is unavailable, the normal handler is retained.
 

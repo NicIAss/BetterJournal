@@ -135,6 +135,5 @@ public sealed class ReadingProgress(Dictionary<string, BookReadingMemory> books)
     }
 }
 
-public sealed class ReadingProgressFile(string path, Action<string> warning, string? legacyPath = null,
-    string legacyArchiveFolder = "legacy-modconfig")
-    : SavedDataFile<ReadingProgressData>(path, warning, legacyPath, legacyArchiveFolder);
+public sealed class ReadingProgressFile(string path, Action<string> warning)
+    : SavedDataFile<ReadingProgressData>(path, warning);

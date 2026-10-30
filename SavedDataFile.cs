@@ -3,9 +3,7 @@ using System.Text.Json;
 namespace BetterJournal;
 
 // Both client progress records use version 1 with a Worlds dictionary.
-// A new-format file always takes precedence over a leftover legacy file.
-public class SavedDataFile<T>(string path, Action<string> warning, string? legacyPath = null,
-    string legacyArchiveFolder = "legacy-modconfig") where T : class, new()
+public class SavedDataFile<T>(string path, Action<string> warning) where T : class, new()
 {
     public bool Writable { get; private set; } = true;
     private static bool Exists(string file) => File.Exists(file) || File.Exists(file + ".bak");
@@ -26,54 +24,7 @@ public class SavedDataFile<T>(string path, Action<string> warning, string? legac
         try { var data = Read(path + ".bak"); warning("Recovered " + Path.GetFileName(path) + " from backup."); return data; }
         catch (Exception ex) { Writable = false; warning("Could not recover progress; keeping files unchanged: " + ex.Message); return new(); }
     }
-    public T Load()
-    {
-        if (Exists(path))
-        {
-            var current = LoadCurrent();
-            if (Writable && legacyPath != null && Exists(legacyPath))
-            {
-                // Finish an interrupted first migration before removing old files.
-                if (!File.Exists(path + ".bak") && !Save(current)) return current;
-                ArchiveLegacy();
-            }
-            return current;
-        }
-        if (legacyPath == null || !Exists(legacyPath)) return new();
-        var legacy = new SavedDataFile<T>(legacyPath, warning);
-        var imported = legacy.Load();
-        if (!legacy.Writable)
-        {
-            Writable = false;
-            warning("Legacy progress could not be migrated safely; keeping original files unchanged.");
-            return imported;
-        }
-        // Commit and read back the complete snapshot before moving either old file.
-        if (Save(imported) && Save(imported))
-        {
-            try { Read(path); Read(path + ".bak"); ArchiveLegacy(); }
-            catch (Exception ex) { Writable = false; warning("Migration verification failed; retaining legacy files: " + ex.Message); }
-        }
-        return imported;
-    }
-    private void ArchiveLegacy()
-    {
-        if (legacyPath == null) return;
-        foreach (var original in new[] { legacyPath, legacyPath + ".bak" })
-        {
-            if (!File.Exists(original)) continue;
-            try
-            {
-                string folder = Path.Combine(Path.GetDirectoryName(path)!, legacyArchiveFolder);
-                Directory.CreateDirectory(folder);
-                string archived = Path.Combine(folder, Path.GetFileName(original));
-                // Preserve an existing archive too, including a different old revision.
-                if (File.Exists(archived)) archived += "." + Guid.NewGuid().ToString("N");
-                File.Move(original, archived);
-            }
-            catch (Exception ex) { warning("Could not archive legacy progress; original retained: " + ex.Message); }
-        }
-    }
+    public T Load() => Exists(path) ? LoadCurrent() : new();
     public bool Save(T data)
     {
         if (!Writable) return false;

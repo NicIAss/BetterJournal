@@ -10,7 +10,6 @@
 - Remember intact tapestry pieces; keep unseen pieces hidden and ignore rotten observations.
 - Match tapestry lore by its source identity and suppress repeated passages.
 - Save reading and tapestry progress locally with backup recovery and separate world/player records.
-- Import progress from the earlier Lore Bookshelf development builds.
 - Document existing-world installation, partial tapestry history, uninstall/reinstall behavior and mod compatibility.
 
 Public name: **BetterJournal**. Author: **NiclAss**. Target: **Vintage Story 1.22.7**. Client-side only.

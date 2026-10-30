@@ -26,7 +26,7 @@ Version **0.1.0** is prepared for its first public release. Publication is still
 
 ![Banner of the Forlorn Hope beside its recovered lore](docs/images/tapestry-reader.png)
 
-These screenshots show an existing collection, including modded lore. Your collection depends on your own discoveries. Some images precede the final tapestry-name correction.
+These screenshots show an existing collection, including modded lore. Your collection depends on your own discoveries.
 
 ## Installation
 
@@ -34,7 +34,7 @@ These screenshots show an existing collection, including modded lore. Your colle
 2. Put the ZIP in your Vintage Story profile's `Mods` folder. Keep it zipped.
 3. Start **Vintage Story 1.22.7**, enter your world or server, and press **J**, or your remapped journal key.
 
-You can install it in an existing singleplayer or multiplayer world. No new world or unexplored chunks are required. Remove older BetterJournal versions and any Lore Bookshelf development ZIP first; do not run both journal replacements together. Development progress imports automatically.
+You can install it in an existing singleplayer or multiplayer world. No new world or unexplored chunks are required.
 
 ## Progress and compatibility
 
@@ -53,7 +53,7 @@ The normal game grants tapestry lore when you look at a complete, intact assembl
 
 NEW records text that has been displayed, not whether you actually read it. A started story can keep its bookmark while fragments are missing or its total is unknown. Moving to a different computer/profile does not automatically move this history.
 
-Progress lives in `ModData/betterjournal/` under the active game profile, separately for each world and player. The mod writes no lore progress into the server journal. See [progress and migration](docs/PROGRESS.md) for the exact storage and compatibility behavior.
+Progress lives in `ModData/betterjournal/` under the active game profile, separately for each world and player. The mod writes no lore progress into the server journal. See [progress and storage](docs/PROGRESS.md) for the exact storage and compatibility behavior.
 
 Other journal replacements can compete for the same shortcut. Independent lore systems and custom tapestry renderers may need an adapter. Removing a lore mod may leave saved journal records whose text or artwork needs that mod's assets. BetterJournal displays what the normal journal still contains; it does not supply missing mod assets. Changed text, translations or identities can appear unread again.
 

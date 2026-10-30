@@ -55,12 +55,8 @@ public sealed class BetterJournalSystem : ModSystem
         {
             string folder = api.GetOrCreateDataPath(Path.Combine("ModData", "betterjournal"));
             void Warn(string message) => api.Logger.Warning("[BetterJournal] {0}", message);
-            var oldDiscoveries = LegacyProgress.Find(folder, GamePaths.ModConfig, "tapestries.json");
-            var oldReading = LegacyProgress.Find(folder, GamePaths.ModConfig, "reading.json");
-            discoveryFile = new SavedDataFile<TapestryDiscoveries>(Path.Combine(folder, "tapestries.json"), Warn,
-                oldDiscoveries.Path, oldDiscoveries.ArchiveFolder);
-            readingFile = new ReadingProgressFile(Path.Combine(folder, "reading.json"), Warn,
-                oldReading.Path, oldReading.ArchiveFolder);
+            discoveryFile = new SavedDataFile<TapestryDiscoveries>(Path.Combine(folder, "tapestries.json"), Warn);
+            readingFile = new ReadingProgressFile(Path.Combine(folder, "reading.json"), Warn);
             discoveries = discoveryFile.Load();
             readingData = readingFile.Load();
         }

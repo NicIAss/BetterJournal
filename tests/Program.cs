@@ -113,8 +113,8 @@ Check(partial.Discovered && partial.Seen.SequenceEqual([true, false]) && partial
     "Looking at a piece reveals only that piece, including designs without lore");
 var tapestryEntry = new JournalEntry { EntryId = 31, LoreCode = "tapestry", Title = "Tapestry", Chapters =
     [new JournalChapter { ChapterId = 8, Text = "Received, possibly mod-patched lore" }, new JournalChapter { ChapterId = 99, Text = "Unmapped mod chapter" }] };
-var legacy = TapestryCollection.Read(designs, [tapestryEntry], seen, Localize);
-Check(legacy[0].SeenCount == 2 && legacy[0].Lore.Single() == "Received, possibly mod-patched lore" && !legacy[1].Discovered,
+var receivedTapestries = TapestryCollection.Read(designs, [tapestryEntry], seen, Localize);
+Check(receivedTapestries[0].SeenCount == 2 && receivedTapestries[0].Lore.Single() == "Received, possibly mod-patched lore" && !receivedTapestries[1].Discovered,
     "Existing journal unlocks the canonical tapestry without spoiling an alternate sharing its chapter ID");
 var remaining = TapestryCollection.BookEntries([vanilla, tapestryEntry, modded], designs).ToList();
 Check(remaining.Count == 3 && remaining[1].Chapters.Single().ChapterId == 99 && tapestryEntry.Chapters.Count == 2,
@@ -176,6 +176,5 @@ ReadingChecks.Run(Check);
 SavedDataChecks.Run(Check);
 PerformanceChecks.Run(Check);
 TapestryRoutingChecks.Run(Check);
-BrandingMigrationChecks.Run(Check);
 ExistingWorldChecks.Run(Check);
 Console.WriteLine($"{checks} checks passed against installed game types.");

@@ -37,7 +37,7 @@ The local `ModData/betterjournal/` files are retained. The game ignores those fi
 
 Normal game lore discoveries continue while BetterJournal is absent. On reinstall, newly received fragments appear unread and newly received tapestry lore can restore the matching standard design. Existing unchanged fragments retain their saved viewing history. Individual pieces only looked at during the absence are not recorded, unless their complete design can later be inferred from received lore. Alternate and no-lore artwork still needs its own observations.
 
-Deleting BetterJournal's entire local folder intentionally resets its extra history. It does not reset vanilla discoveries; known journal chapters remain readable and still reconstruct canonical tapestry artwork. Old development saves may import again if they are still present in their original locations. Import archives inside the deleted folder do not import by themselves.
+Deleting BetterJournal's entire local folder intentionally resets its extra history. It does not reset vanilla discoveries; known journal chapters remain readable and still reconstruct canonical tapestry artwork.
 
 ## Storage
 
@@ -68,9 +68,3 @@ Reading anchors follow text positions within fragments rather than screen page n
 Removing a lore mod does not necessarily remove its server-saved journal entries. Remaining entries may display localization keys instead of text, or lack tapestry art, if that mod's assets are unavailable. BetterJournal does not recover missing assets or erase those entries. Entries removed from the received journal leave dormant local memories; restoring the same identity and text can restore their reading progress. Changes to codes, IDs, text or translations may prevent that match.
 
 The tested game target is 1.22.7. Major game/API changes and arbitrary mod changes cannot be guaranteed compatible.
-
-## Earlier development builds
-
-Lore Bookshelf development saves under `ModData/lorebookshelf/` are preferred over older `ModConfig/lorebookshelf-*.json` files. Existing BetterJournal data always takes precedence. Imported data is written and read back with an active backup before the original files move into `legacy-lorebookshelf/` or `legacy-modconfig/` beneath the new folder. Archive collisions preserve both copies; interrupted cleanup retries. Backup-only saves can migrate too.
-
-The rename preserves world/player keys, fragment identities and saved-data schema version 1. Remove the old development ZIP before installing BetterJournal; do not run both journal replacements together.

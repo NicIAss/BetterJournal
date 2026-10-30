@@ -29,7 +29,7 @@ static class TapestryRoutingChecks
         check(LoreCatalogue.FindTapestryName("tapestry-rotbeast11", english) == "Rotbeast" &&
             LoreCatalogue.FindTapestryName("tapestry-rot1", english) == "Rot" &&
             designs.All(d => LoreCatalogue.FindTapestryName(d.NameKey, english) != null),
-            "All vanilla designs resolve names and Rotbeast prefers its specific translation over the earlier Rot wildcard");
+            "All vanilla designs resolve names and Rotbeast prefers its specific translation over the broader Rot wildcard");
         var customNames = new Dictionary<string, string> { ["example:tapestry-art*"] = "Broad", ["example:tapestry-art-special*"] = "Specific",
             ["example:tapestry-art-special1"] = "Exact", ["other:tapestry-art*"] = "Other domain" };
         check(LoreCatalogue.FindTapestryName("example:tapestry-art-special1", customNames) == "Exact" &&
@@ -101,7 +101,7 @@ static class TapestryRoutingChecks
             "Wrong-numbered chapters reveal no unrelated artwork and missing lore is never filled from assets");
         var missingIds = Network(Entry(sources.Select(s => Chapter(0, s))));
         check(Read(designs, missingIds).Where(v => v.Design.InferFromLore).All(v => v.Complete && v.Lore.Count == 1),
-            "Legacy journals and vanilla discover-everything records with default chapter IDs route by source identity");
+            "Journal records and vanilla discover-everything packets with default chapter IDs route by source identity");
         var shuffled = Network(Entry(sources.Reverse().Select((s, i) => Chapter(100 + i, s))));
         check(Read(designs, shuffled).Select(v => v.Revision).SequenceEqual(allViews.Select(v => v.Revision)),
             "Reordering entries and changing every numeric chapter ID leaves tapestry content and acknowledgement revisions stable");

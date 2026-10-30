@@ -13,9 +13,8 @@ The repository is private while final testing is pending. There is no automatic 
 - Check Nightfall, Rot, Rotbeast, Schematic D, Blackguard Map and Forlorn Hope for correct artwork, names and a single correct lore passage.
 - Verify partial/rotten tapestry pieces and completed NEW prompts.
 - Leave/rejoin the multiplayer server and confirm progress remains correct.
-- With a copy of development progress, confirm migration creates `ModData/betterjournal/` and retains archives.
+- Confirm local progress is stored under `ModData/betterjournal/` and persists after restarting.
 
-Do not install the old Lore Bookshelf mod alongside this candidate.
 
 ## After approval
 
