@@ -6,7 +6,7 @@ Requires PowerShell, the .NET 10 SDK, and an installed copy of Vintage Story **1
 ./build.ps1 -GamePath 'C:\Games\VintageStory'
 ```
 
-Alternatively, set `VINTAGE_STORY` to the game directory. Use `-DotnetPath` when the SDK executable is not on PATH. The build script compiles Release, runs the compatibility checks, and writes `dist/betterjournal-0.1.0.zip` and its SHA-256 checksum. It packages only the mod DLL, metadata, icon, localization and license notices.
+Alternatively, set `VINTAGE_STORY` to the game directory. Use `-DotnetPath` when the SDK executable is not on PATH. The build script compiles Release, runs the compatibility checks, and writes `dist/BetterJournalv0.1.1.zip` and its SHA-256 checksum. Future mod packages follow `BetterJournalv<version>.zip`, with the same basename for the `.sha256` file. It packages only the mod DLL, metadata, icon, localization and license notices.
 
 Run checks separately:
 

@@ -1,4 +1,4 @@
-# Validation — BetterJournal v0.1.0
+# Validation — BetterJournal v0.1.1
 
 Target: Vintage Story **1.22.7**, .NET 10. Prepared for the first public release; final player testing is pending.
 

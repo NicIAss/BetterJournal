@@ -6,7 +6,7 @@
     "NiclAss"
   ],
   "description": "A client-side journal replacement with a bookshelf, animated books, bookmarks and a tapestry gallery. Supports vanilla and modded journal lore.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "website": "https://github.com/NicIAss/BetterJournal",
   "iconpath": "modicon.png",
   "side": "client",

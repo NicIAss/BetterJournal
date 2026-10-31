@@ -29,7 +29,7 @@ foreach ($journalInput in $journalInputs) {
 }
 $journalDist = Join-Path $journalRoot 'dist'
 New-Item -ItemType Directory -Path $journalDist -Force | Out-Null
-$journalZip = Join-Path $journalDist "$($journalMetadata.modid)-$journalVersion.zip"
+$journalZip = Join-Path $journalDist "BetterJournalv$journalVersion.zip"
 Compress-Archive -LiteralPath $journalInputs -DestinationPath $journalZip -Force
 $journalHash = (Get-FileHash -LiteralPath $journalZip -Algorithm SHA256).Hash.ToLowerInvariant()
 $journalChecksum = "$journalHash  $([IO.Path]::GetFileName($journalZip))" + [Environment]::NewLine
