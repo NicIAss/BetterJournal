@@ -1,6 +1,6 @@
 # Validation — BetterJournal v0.1.1
 
-Target: Vintage Story **1.22.7**, .NET 10. Prepared for the first public release; final player testing is pending.
+Target: Vintage Story **1.22.7**, .NET 10. Version 0.1.1 is published on the [Vintage Story Mod DB](https://mods.vintagestory.at/betterjournal).
 
 ## Automated checks
 
@@ -24,7 +24,7 @@ Game files are used locally for checks and are not packaged or uploaded. The nor
 
 The underlying UI was exercised during development at multiple GUI sizes, including book controls, swipes, cover/page animations, text-size changes, bookmarks and tapestry prompts. The author-supplied screenshots document the current experience, including a correctly separated Forlorn Hope lore entry.
 
-The last automated tapestry regressions reproduce the duplicate/mismatched-chapter conditions with installed game types and serialization. They do not prove that the author's specific multiplayer server has been retested. The final package still needs approval after in-game testing before publication. The checklist is in [docs/RELEASING.md](docs/RELEASING.md).
+The last automated tapestry regressions reproduce the duplicate/mismatched-chapter conditions with installed game types and serialization. They do not prove that the author's specific multiplayer server has been retested. The release checklist is in [docs/RELEASING.md](docs/RELEASING.md).
 
 The mod remains client-side and reads the game's received journal. The server journal and discovery records are never rewritten. Local saves retain schema version 1. Unknown mod lore stays accessible; missing lore is never read from the catalogue into the UI.
 
@@ -34,4 +34,4 @@ A first fit of long content or a new text size can still hitch on the game threa
 
 The README, release notes, metadata summary and prepared ModDB page use plain feature sentences. Existing-world and uninstall claims were checked against the installed vanilla tapestry discovery code, the client integration and the local storage/projection code. No runtime discovery or uninstall behavior needed changing for these documented scenarios.
 
-Six lifecycle regression checks exercise the projections and actual local file save/load operations; they do not simulate a complete running server or prove all third-party mod combinations compatible. The ModDB preview was checked in a browser at its default desktop width: all four supplied screenshots and three button icons loaded, the page had no horizontal overflow, and collapsible sections opened/closed. The actual ModDB editor/sanitizer and a narrow viewport were not tested. ModDB screenshot URLs use the public niclass-images repository, independently of the private BetterJournal code repository.
+Six lifecycle regression checks exercise the projections and actual local file save/load operations; they do not simulate a complete running server or prove all third-party mod combinations compatible. The ModDB preview was checked in a browser at its default desktop width: all four supplied screenshots and three button icons loaded, the page had no horizontal overflow, and collapsible sections opened/closed. The actual ModDB editor/sanitizer and a narrow viewport were not tested. ModDB screenshot URLs use the public niclass-images repository, separately from the BetterJournal code repository.

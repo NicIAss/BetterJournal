@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.1 — prepared for first public release
+## 0.1.1 — first public release
 
 - Replace the vanilla journal shortcut with a bookshelf and animated book reader.
 - Read vanilla and modded journal entries on fitted pages, with adjustable text size.

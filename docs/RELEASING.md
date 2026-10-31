@@ -1,8 +1,8 @@
 # First release preparation
 
-Prepared version: **v0.1.1**, mod ID `betterjournal`, author **NiclAss**, target game **1.22.7**.
+Current version: **v0.1.1**, mod ID `betterjournal`, author **NiclAss**, target game **1.22.7**.
 
-The repository is private. The prepared build is identified by tag `v0.1.1`; publishing the GitHub release remains a manual step. There is no automatic publishing workflow.
+The repository is public and version 0.1.1 is live on the [Vintage Story Mod DB](https://mods.vintagestory.at/betterjournal). Tag `v0.1.1` identifies the build. The GitHub release remains a draft; publication there is a separate manual step. There is no automatic publishing workflow.
 
 ## Final in-game pass
 
@@ -21,7 +21,7 @@ The repository is private. The prepared build is identified by tag `v0.1.1`; pub
 1. Rebuild and run all checks against Vintage Story 1.22.7.
 2. Verify `modinfo.json` and `BetterJournal.csproj` both say `0.1.1`, then check the ZIP/checksum.
 3. Update release status in the README, changelog and validation record.
-4. Make the repository public when approved and publish a GitHub release from the prepared `v0.1.1` tag using `docs/releases/v0.1.1.md`.
+4. To publish on GitHub, use the draft release for tag `v0.1.1` and the notes in `docs/releases/v0.1.1.md`.
 5. Use the package naming standard `BetterJournalv<version>.zip`. Attach `BetterJournalv0.1.1.zip` and `BetterJournalv0.1.1.zip.sha256`. GitHub supplies source archives for the tag.
 
-The prepared ModDB fragment is `docs/moddb/description.html`, with a short summary and local preview beside it. It uses NiclAss's supplied page design. Its screenshot URLs use the public `NicIAss/niclass-images/betterjournal/` folder, so the images work while the BetterJournal code repository is private. The preview uses those same public image URLs.
+The prepared ModDB fragment is `docs/moddb/description.html`, with a short summary and local preview beside it. It uses NiclAss's supplied page design. Its screenshot URLs use the public `NicIAss/niclass-images/betterjournal/` folder, separately from this code repository. The preview uses those same public image URLs.

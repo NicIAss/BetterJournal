@@ -6,6 +6,6 @@
 
 The page reuses the supplied BetterTraders page's cream background, buttons, spoiler sections and design credit. It uses plain feature sentences and the BetterJournal repository/issue URLs. The Discord invite is retained from the supplied template. There is no BetterTraders team banner, world-generation copy or hidden trader-keyword block.
 
-Screenshots in both HTML files use the public `NicIAss/niclass-images` repository under `betterjournal/`: `bookshelf.png`, `book.png`, `tapestries.png` and `tapestrysingleview.png`. They work independently of the private BetterJournal code repository. The supplied GitHub blob links are used in their raw-image form so browsers display the PNG files. The ModDB page has not been published.
+Screenshots in both HTML files use the public `NicIAss/niclass-images` repository under `betterjournal/`: `bookshelf.png`, `book.png`, `tapestries.png` and `tapestrysingleview.png`. They are hosted separately from the BetterJournal code repository. The supplied GitHub blob links are used in their raw-image form so browsers display the PNG files. The live page is [BetterJournal on the Vintage Story Mod DB](https://mods.vintagestory.at/betterjournal).
 
 When editing the description, keep the preview's body synchronized with the fragment. Both use the same public screenshot URLs. Progress behavior is documented in [PROGRESS.md](../PROGRESS.md).

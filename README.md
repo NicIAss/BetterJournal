@@ -4,7 +4,7 @@ BetterJournal replaces Vintage Story's journal list with a bookshelf, animated b
 
 By **NiclAss** · **Client-side only** · **Vintage Story 1.22.7** · **MIT**
 
-Version **0.1.1** is prepared for its first public release. Publication is still pending.
+Version **0.1.1** is available on the [Vintage Story Mod DB](https://mods.vintagestory.at/betterjournal).
 
 ![The bookshelf showing collected stories, fragment counts and unread markers](docs/images/bookshelf.png)
 
@@ -30,7 +30,7 @@ These screenshots show an existing collection, including modded lore. Your colle
 
 ## Installation
 
-1. Download `BetterJournalv0.1.1.zip` from [GitHub Releases](https://github.com/NicIAss/BetterJournal/releases) once published.
+1. Download `BetterJournalv0.1.1.zip` from the [Vintage Story Mod DB](https://mods.vintagestory.at/betterjournal).
 2. Put the ZIP in your Vintage Story profile's `Mods` folder. Keep it zipped.
 3. Start **Vintage Story 1.22.7**, enter your world or server, and press **J**, or your remapped journal key.
 
@@ -83,6 +83,6 @@ The supported target is **1.22.7**. Other game versions are not validated. First
 - [Validation status](VALIDATION.md)
 - [Changelog](CHANGELOG.md)
 - [Release notes](docs/releases/v0.1.1.md)
-- [Prepared ModDB description](docs/moddb/description.html)
+- [ModDB description source](docs/moddb/description.html)
 
 Original code is licensed under [MIT](LICENSE). Game content shown in screenshots belongs to its respective creators; see [third-party notices](THIRD_PARTY_NOTICES.md).
