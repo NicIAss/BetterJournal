@@ -63,6 +63,10 @@ BetterJournal supports vanilla and modded lore delivered through the normal jour
 
 The gallery uses received source/localization identities to avoid mixing tapestry lore when numeric chapter IDs change or collide. Duplicate recovered passages display once. Unmatched chapters stay in books. Loaded metadata supplies counts and source identities, not unrecovered reading text.
 
+Book totals also use the loaded fragment catalogue. Known fragment keys retain their total even when received chapter IDs repeat or fall outside the catalogue's numeric range. Vanilla Letters has eight fragments, so five recovered Letters fragments show `5/8`. Repeated records of a uniquely identified fragment are counted/displayed once, retaining the first record's original ID and source text for reading history. The server journal is not modified.
+
+A mod can also create journal entries directly without defining its complete fragment list, or a server can supply content absent from the client's catalogue. Those totals cannot be established from the received subset alone. Such entries show `found/?` and remain readable rather than claiming a fabricated complete total. All matching vanilla and modded catalogue entries show `found/total`.
+
 Reading anchors follow text positions within fragments rather than screen page numbers, so resizing or changing text size can retain progress. Reading identity includes lore code, chapter ID and a fingerprint of source/resolved text; entry IDs and list order are not persistent identities. Added or changed content starts unread. Language changes may show NEW again; returning to an unchanged revision can restore its history.
 
 Removing a lore mod does not necessarily remove its server-saved journal entries. Remaining entries may display localization keys instead of text, or lack tapestry art, if that mod's assets are unavailable. BetterJournal does not recover missing assets or erase those entries. Entries removed from the received journal leave dormant local memories; restoring the same identity and text can restore their reading progress. Changes to codes, IDs, text or translations may prevent that match.

@@ -53,12 +53,11 @@ public sealed partial class BookshelfDialog : GuiDialog
     public override bool PrefersUngrabbedMouse => true;
     public override bool DisableMouseGrab => true;
     private static string L(string key, params object[] args) => Lang.Get("betterjournal:" + key, args);
-    private static string Fragments(int count) => count == 1 ? L("fragment-one") : L("fragments", count);
     private static string Progress(JournalBook book) => book.TotalFragments is int total
         ? L("progress", book.FragmentCount, total) + " · " + (book.FragmentCount == total ? L("complete") : L("missing", total - book.FragmentCount))
-        : Fragments(book.FragmentCount) + " · " + L("total-unknown");
+        : L("progress", book.FragmentCount, "?") + " · " + L("total-unknown");
     private List<JournalBook> ReadBooks() => JournalBooks.Read(TapestryCollection.BookEntries(readEntries(), catalogue.Tapestries),
-        text => text.Length == 0 ? "" : Lang.Get(text), catalogue.Totals);
+        text => text.Length == 0 ? "" : Lang.Get(text), catalogue.Totals, catalogue.Sources);
     private List<TapestryView> ReadTapestries() => TapestryCollection.Read(catalogue.Tapestries, readEntries(), readSeen(),
         text => text.Length == 0 ? "" : Lang.Get(text)).OrderByDescending(v => v.Discovered).ToList();
     private CairoFont Font(float size, bool paper = false) =>
@@ -381,7 +380,7 @@ public sealed partial class BookshelfDialog : GuiDialog
     private void CaptureBook()
     {
         motion.CaptureScene(width, height, perSpread == 2, selected!,
-            selected!.TotalFragments is int total ? L("progress", selected.FragmentCount, total) : Fragments(selected.FragmentCount));
+            selected!.TotalFragments is int total ? L("progress", selected.FragmentCount, total) : L("progress", selected.FragmentCount, "?"));
         CaptureLeaf(0, 0, page);
         if (perSpread == 2) CaptureLeaf(1, 1, page + 1);
     }

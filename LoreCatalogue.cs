@@ -8,6 +8,7 @@ namespace BetterJournal;
 public sealed class LoreCatalogue
 {
     public Dictionary<string, int> Totals { get; } = [];
+    public Dictionary<string, string[]> Sources { get; } = [];
     public List<TapestryDesign> Tapestries { get; } = [];
     public Dictionary<string, string> TapestryNames { get; } = [];
     private readonly Dictionary<(string Domain, string Code, string Type), (TapestryDesign Design, string Piece)> pieces = [];
@@ -21,7 +22,7 @@ public sealed class LoreCatalogue
 
     public LoreCatalogue(ICoreClientAPI api)
     {
-        var sources = new Dictionary<string, string[]>();
+        var sources = Sources;
         foreach (var asset in api.Assets.GetMany<CountAsset>(api.Logger, "config/lore/").Values)
             if (!string.IsNullOrEmpty(asset.Code))
             {

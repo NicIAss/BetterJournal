@@ -7,7 +7,7 @@ public sealed record RecoveredPage(int ChapterId, int Part, string Text, string 
 public sealed record JournalBook(int EntryId, string Code, string Title, int FragmentCount, IReadOnlyList<RecoveredPage> Pages,
     int? TotalFragments = null, string? ProgressKey = null)
 {
-    public string SpineProgress => TotalFragments is int total ? $"{FragmentCount}/{total}" : FragmentCount.ToString();
+    public string SpineProgress => TotalFragments is int total ? $"{FragmentCount}/{total}" : $"{FragmentCount}/?";
 }
 
 public static class JournalBooks
@@ -15,13 +15,28 @@ public static class JournalBooks
     // Text and titles always come from received entries. The optional catalogue
     // supplies counts only; arbitrary entries inserted by mods still work.
     public static List<JournalBook> Read(IEnumerable<JournalEntry> entries, Func<string, string> localize,
-        IReadOnlyDictionary<string, int>? totals = null)
+        IReadOnlyDictionary<string, int>? totals = null, IReadOnlyDictionary<string, string[]>? catalogueSources = null)
     {
         var books = new List<JournalBook>();
         foreach (var entry in entries)
         {
+            var recovered = (entry.Chapters ?? []).ToList();
+            string[]? definition = null;
+            bool sourceMatch = false;
+            if (catalogueSources?.TryGetValue(entry.LoreCode ?? "", out definition) == true && definition.Length > 0)
+            {
+                var occurrences = definition.GroupBy(SourceKey).ToDictionary(g => g.Key, g => g.Count());
+                var found = new HashSet<string>();
+                // A catalogue source occurring once identifies one fragment, even when
+                // received IDs repeat/change. Retain the first record's ID and text so
+                // existing reading identities survive; never edit the server journal.
+                recovered = recovered.Where(c => !occurrences.TryGetValue(SourceKey(c.Text), out int copies) ||
+                    copies != 1 || found.Add(SourceKey(c.Text))).ToList();
+                sourceMatch = recovered.All(c => occurrences.ContainsKey(SourceKey(c.Text))) &&
+                    recovered.GroupBy(c => SourceKey(c.Text)).All(g => g.Count() <= occurrences[g.Key]);
+            }
             var pages = new List<RecoveredPage>();
-            foreach (var chapter in entry.Chapters ?? [])
+            foreach (var chapter in recovered)
             {
                 var text = localize(chapter.Text ?? "");
                 string revision = ReadingProgress.Fingerprint(chapter.Text ?? "", text);
@@ -30,15 +45,19 @@ public static class JournalBooks
                     pages.Add(new RecoveredPage(chapter.ChapterId, i, parts[i], revision));
             }
             int? total = null;
-            if (totals?.TryGetValue(entry.LoreCode ?? "", out int count) == true && count > 0 &&
-                (entry.Chapters ?? []).All(c => c.ChapterId >= 0 && c.ChapterId < count) &&
-                (entry.Chapters ?? []).Select(c => c.ChapterId).Distinct().Count() == (entry.Chapters?.Count ?? 0)) total = count;
+            if (sourceMatch) total = definition!.Length;
+            else if (definition == null && totals?.TryGetValue(entry.LoreCode ?? "", out int count) == true && count > 0 &&
+                recovered.All(c => c.ChapterId >= 0 && c.ChapterId < count) &&
+                recovered.Select(c => c.ChapterId).Distinct().Count() == recovered.Count) total = count;
             books.Add(new JournalBook(entry.EntryId, entry.LoreCode ?? "", localize(entry.Title ?? ""),
-                entry.Chapters?.Count ?? 0, pages, total, string.IsNullOrEmpty(entry.LoreCode)
+                recovered.Count, pages, total, string.IsNullOrEmpty(entry.LoreCode)
                     ? "title:" + ReadingProgress.Fingerprint(entry.Title ?? "") : "code:" + entry.LoreCode));
         }
         return books;
     }
+
+    private static string SourceKey(string? source) => source?.StartsWith("game:", StringComparison.Ordinal) == true
+        ? source[5..] : source ?? "";
 
     public static IReadOnlyList<string> SplitPages(string text)
     {

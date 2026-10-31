@@ -4,7 +4,7 @@ Target: Vintage Story **1.22.7**, .NET 10. Prepared for the first public release
 
 ## Automated checks
 
-The release build passes all **127 checks** against the installed 1.22.7 game assemblies and assets, with zero compiler warnings/errors. Coverage includes:
+The release build passes all **138 checks** against the installed 1.22.7 game assemblies and assets, with zero compiler warnings/errors. Coverage includes:
 
 - Vanilla and arbitrary mod-added journal entries, localization, rich text, page breaks and updates.
 - Fitted pagination with complete word retention and formatting/link preservation.
@@ -16,6 +16,7 @@ The release build passes all **127 checks** against the installed 1.22.7 game as
 - Source-based tapestry routing, duplicate suppression, default/reordered/colliding IDs and full/incremental protobuf journal messages.
 - Specific Rotbeast naming rather than the broader Rot wildcard, plus mod-domain/exact translation precedence.
 - Existing-world installation, no retroactive partial/alternate observations, complete remembered artwork without a new lore grant, uninstall/reinstall storage round trips, discoveries received while absent, dormant reading history and a local-only progress reset.
+- Catalogue-based book totals across all installed vanilla definitions, Letters at 5/8 and 8/8 with repeated/default/out-of-range chapter IDs, duplicate packets, retained reading identities, qualified keys, mod-defined catalogues and genuinely uncatalogued content.
 
 Game files are used locally for checks and are not packaged or uploaded. The normal player profile/worlds are not used by the automated suite.
 

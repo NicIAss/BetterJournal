@@ -10,7 +10,7 @@ Version **0.1.0** is prepared for its first public release. Publication is still
 
 ## Features
 
-- Collected journal entries become books with readable spines and recovered-fragment counts when a reliable total is available.
+- Collected journal entries become books with readable spines and found/total fragment counts from the lore catalogue, such as `5/8` for five Letters fragments.
 - Books have animated covers and page turns. Long entries use fitted pages instead of scrolling, with adjustable text size.
 - Turn pages with buttons, arrow keys or a horizontal swipe.
 - NEW markers, bookmarks, saved reading positions and Next unread help you return to unfinished stories.
@@ -52,6 +52,8 @@ You can install it in an existing singleplayer or multiplayer world. No new worl
 The normal game grants tapestry lore when you look at a complete, intact assembly. Remembering pieces in the gallery does not unlock its story. A complete gallery image can therefore have no recovered lore yet. Designs with no assigned lore remain artwork only.
 
 NEW records text that has been displayed, not whether you actually read it. A started story can keep its bookmark while fragments are missing or its total is unknown. Moving to a different computer/profile does not automatically move this history.
+
+Vanilla and modded catalogue entries show `found/total` even when received chapter numbers repeat or change. A mod that inserts journal content without a complete catalogue can still have an unknown total; those entries show `found/?` rather than pretending the currently received fragments are the whole story.
 
 Progress lives in `ModData/betterjournal/` under the active game profile, separately for each world and player. The mod writes no lore progress into the server journal. See [progress and storage](docs/PROGRESS.md) for the exact storage and compatibility behavior.
 
