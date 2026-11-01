@@ -49,7 +49,12 @@ public sealed class BetterJournalSystem : ModSystem
             return;
         }
         previousHandler = hotkey.Handler;
-        catalogue = new LoreCatalogue(api);
+        try { catalogue = new LoreCatalogue(api); }
+        catch (Exception ex)
+        {
+            api.Logger.Warning("[BetterJournal] Optional catalogue unavailable; recovered journal entries remain readable: {0}", ex);
+            catalogue = new LoreCatalogue();
+        }
         persistent = !string.IsNullOrEmpty(api.World.SavegameIdentifier) && !string.IsNullOrEmpty(api.World.Player?.PlayerUID);
         try
         {

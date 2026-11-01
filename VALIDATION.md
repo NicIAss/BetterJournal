@@ -1,10 +1,10 @@
-# Validation — BetterJournal v0.1.1
+# Validation — BetterJournal v0.1.2
 
-Target: Vintage Story **1.22.7**, .NET 10. Version 0.1.1 is published on the [Vintage Story Mod DB](https://mods.vintagestory.at/betterjournal).
+Target: Vintage Story **1.22.7**, .NET 10. Release date: **2026-11-01**. Package: `BetterJournalv0.1.2.zip`; release notes: [v0.1.2](docs/releases/v0.1.2.md).
 
 ## Automated checks
 
-The release build passes all **138 checks** against the installed 1.22.7 game assemblies and assets, with zero compiler warnings/errors. Coverage includes:
+The release build passes all **144 checks** against the installed 1.22.7 game assemblies and assets, with zero compiler warnings/errors. Coverage includes:
 
 - Vanilla and arbitrary mod-added journal entries, localization, rich text, page breaks and updates.
 - Fitted pagination with complete word retention and formatting/link preservation.
@@ -17,10 +17,15 @@ The release build passes all **138 checks** against the installed 1.22.7 game as
 - Specific Rotbeast naming rather than the broader Rot wildcard, plus mod-domain/exact translation precedence.
 - Existing-world installation, no retroactive partial/alternate observations, complete remembered artwork without a new lore grant, uninstall/reinstall storage round trips, discoveries received while absent, dormant reading history and a local-only progress reset.
 - Catalogue-based book totals across all installed vanilla definitions, Letters at 5/8 and 8/8 with repeated/default/out-of-range chapter IDs, duplicate packets, retained reading identities, qualified keys, mod-defined catalogues and genuinely uncatalogued content.
+- Optional catalogue asset failures: missing backing files, malformed/null metadata, unavailable asset indexes, relevant language-origin failures, exact language paths, and exclusion of unrelated mod domains. Constructor checks verify German translation priority and English fallback; empty catalogue checks retain recovered journal entries.
 
 Game files are used locally for checks and are not packaged or uploaded. The normal player profile/worlds are not used by the automated suite.
 
 ## Current status and limits
+
+The asset-loading fix was exercised in an isolated Vintage Story 1.22.7 profile with 89 of the 90 requested mods, including Stable Surface 0.0.3. J opened the bookshelf, the gallery displayed all 31 vanilla tapestry designs, and restarting the client installed the reader successfully again without a BetterJournal warning or the reported `LevelFinalize` exception. The test profile omitted the unavailable custom straw mod; Chisel Tools and ConfigLib used supported replacements for retracted releases, and Deciduous Trees used 2.1.0 because its version was absent from the supplied logs. This is not an exact reproduction of the reporter's configuration or original server. Details are in [the regression report](docs/OPTIONAL-ASSET-FIX.md).
+
+The selected-language fallback is covered by automated checks. A full German interface/playthrough was not visually retested; BetterJournal's own interface labels currently ship in English. Restarting the game rebuilds the catalogue for the selected language.
 
 The underlying UI was exercised during development at multiple GUI sizes, including book controls, swipes, cover/page animations, text-size changes, bookmarks and tapestry prompts. The author-supplied screenshots document the current experience, including a correctly separated Forlorn Hope lore entry.
 

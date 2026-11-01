@@ -178,4 +178,5 @@ PerformanceChecks.Run(Check);
 TapestryRoutingChecks.Run(Check);
 ExistingWorldChecks.Run(Check);
 BookCountChecks.Run(Check);
+CatalogueAssetChecks.Run(Check);
 Console.WriteLine($"{checks} checks passed against installed game types.");

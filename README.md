@@ -4,7 +4,7 @@ BetterJournal replaces Vintage Story's journal list with a bookshelf, animated b
 
 By **NiclAss** · **Client-side only** · **Vintage Story 1.22.7** · **MIT**
 
-Version **0.1.1** is available on the [Vintage Story Mod DB](https://mods.vintagestory.at/betterjournal).
+Download **v0.1.2** from [GitHub Releases](https://github.com/NicIAss/BetterJournal/releases/tag/v0.1.2). This update fixes a startup failure caused by an unreadable language asset from another mod. The [Vintage Story Mod DB page](https://mods.vintagestory.at/betterjournal) is also available; check the version listed there.
 
 ![The bookshelf showing collected stories, fragment counts and unread markers](docs/images/bookshelf.png)
 
@@ -30,8 +30,8 @@ These screenshots show an existing collection, including modded lore. Your colle
 
 ## Installation
 
-1. Download `BetterJournalv0.1.1.zip` from the [Vintage Story Mod DB](https://mods.vintagestory.at/betterjournal).
-2. Put the ZIP in your Vintage Story profile's `Mods` folder. Keep it zipped.
+1. Download `BetterJournalv0.1.2.zip` from [GitHub Releases](https://github.com/NicIAss/BetterJournal/releases/tag/v0.1.2).
+2. Replace the previous BetterJournal ZIP in your Vintage Story profile's `Mods` folder with the new ZIP. Keep it zipped and enable only one copy.
 3. Start **Vintage Story 1.22.7**, enter your world or server, and press **J**, or your remapped journal key.
 
 You can install it in an existing singleplayer or multiplayer world. No new world or unexplored chunks are required.
@@ -59,6 +59,10 @@ Progress lives in `ModData/betterjournal/` under the active game profile, separa
 
 Other journal replacements can compete for the same shortcut. Independent lore systems and custom tapestry renderers may need an adapter. Removing a lore mod may leave saved journal records whose text or artwork needs that mod's assets. BetterJournal displays what the normal journal still contains; it does not supply missing mod assets. Changed text, translations or identities can appear unread again.
 
+Optional catalogue files are loaded independently. A missing or unreadable lore definition or tapestry language file is skipped with a warning; it does not by itself disable BetterJournal or remove received journal entries. Tapestry language lookups only cover domains that provide loaded tapestry designs. If unexpected catalogue setup fails entirely, the reader still opens with recovered entries, while optional totals and tapestry metadata may be unavailable for that session.
+
+Lore text follows the game's language where the content provides translations. Tapestry names prefer the selected language and fall back to English where available. BetterJournal's own buttons and status labels currently ship in English. Restart the game after changing its language.
+
 The supported target is **1.22.7**. Other game versions are not validated. First-time fitting of long entries or a new text size can still cause a brief hitch.
 
 ## Controls
@@ -82,7 +86,8 @@ The supported target is **1.22.7**. Other game versions are not validated. First
 - [Build from source](docs/DEVELOPING.md)
 - [Validation status](VALIDATION.md)
 - [Changelog](CHANGELOG.md)
-- [Release notes](docs/releases/v0.1.1.md)
+- [Release notes](docs/releases/v0.1.2.md)
+- [Optional asset loading fix](docs/OPTIONAL-ASSET-FIX.md)
 - [ModDB description source](docs/moddb/description.html)
 
 Original code is licensed under [MIT](LICENSE). Game content shown in screenshots belongs to its respective creators; see [third-party notices](THIRD_PARTY_NOTICES.md).

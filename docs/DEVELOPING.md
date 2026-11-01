@@ -6,7 +6,7 @@ Requires PowerShell, the .NET 10 SDK, and an installed copy of Vintage Story **1
 ./build.ps1 -GamePath 'C:\Games\VintageStory'
 ```
 
-Alternatively, set `VINTAGE_STORY` to the game directory. Use `-DotnetPath` when the SDK executable is not on PATH. The build script compiles Release, runs the compatibility checks, and writes `dist/BetterJournalv0.1.1.zip` and its SHA-256 checksum. Future mod packages follow `BetterJournalv<version>.zip`, with the same basename for the `.sha256` file. It packages only the mod DLL, metadata, icon, localization and license notices.
+Alternatively, set `VINTAGE_STORY` to the game directory. Use `-DotnetPath` when the SDK executable is not on PATH. The build script compiles Release, runs the compatibility checks, and writes `dist/BetterJournalv0.1.2.zip` and its SHA-256 checksum. Mod packages follow `BetterJournalv<version>.zip`, with the same basename for the `.sha256` file. It packages only the mod DLL, metadata, icon, localization and license notices.
 
 Run checks separately:
 
@@ -22,7 +22,7 @@ Some checks inspect the installed game assets and assemblies, including all vani
 - `BookshelfDialog*.cs`: bookshelf, book and tapestry views.
 - `BookMotion.cs`, `BookPose.cs`, `WindowMotion.cs`: animated books and window transitions.
 - `JournalBooks.cs`, `BookPagination.cs`, `PageLayoutCache.cs`: received lore projection and fitted pages.
-- `LoreCatalogue.cs`, `TapestryCollection.cs`: lore identity, mosaics, names and gallery routing.
+- `LoreCatalogue.cs`, `CatalogueAssets.cs`, `TapestryCollection.cs`: lore identity, independent optional asset loading, mosaics, names and gallery routing.
 - `ReadingProgress.cs`, `ReadingExposure.cs`, `SavedDataFile.cs`: reading history, visibility rules and atomic files.
 - `tests/`: compatibility, pagination, animation, persistence and tapestry regression checks.
 

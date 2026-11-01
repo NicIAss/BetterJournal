@@ -20,24 +20,29 @@ public sealed class LoreCatalogue
         public string[] Pieces { get; set; } = [];
     }
 
+    internal LoreCatalogue() { }
+
     public LoreCatalogue(ICoreClientAPI api)
     {
+        void Warn(string message) => api.Logger.Warning("[BetterJournal] {0}", message);
         var sources = Sources;
-        foreach (var asset in api.Assets.GetMany<CountAsset>(api.Logger, "config/lore/").Values)
+        foreach (var asset in CatalogueAssets.Read<CountAsset>(api.Assets, "config/lore/", Warn).Select(a => a.Value))
             if (!string.IsNullOrEmpty(asset.Code))
             {
                 sources[asset.Code] = asset.Pieces ?? [];
                 Totals[asset.Code] = sources[asset.Code].Length;
             }
         Tapestries.AddRange(BuildTapestries(api.World.Blocks.OfType<BlockTapestry>(), sources));
+        var tapestryDomains = Tapestries.Select(d => new AssetLocation(d.NameKey).Domain).ToHashSet(StringComparer.Ordinal);
         // GetMatching returns the first matching wildcard: Rot* also catches Rotbeast*.
         // Resolve the most specific loaded name once, outside UI rendering/composition.
         foreach (string locale in new[] { Lang.DefaultLocale, Lang.CurrentLocale }.Distinct())
         {
             var names = new Dictionary<string, string>();
-            foreach (var (location, translations) in api.Assets.GetMany<Dictionary<string, string>>(api.Logger, "lang/" + locale + ".json"))
+            foreach (var (location, translations) in CatalogueAssets.Read<Dictionary<string, string>>(api.Assets,
+                "lang/" + locale + ".json", Warn, tapestryDomains, exactPath: true))
                 foreach (var (key, value) in translations)
-                    names[key.Contains(':') ? key : location.Domain + ":" + key] = value;
+                    if (!string.IsNullOrEmpty(value)) names[key.Contains(':') ? key : location.Domain + ":" + key] = value;
             foreach (var design in Tapestries)
                 if (FindTapestryName(design.NameKey, names) is { } title) TapestryNames[design.NameKey] = title;
         }

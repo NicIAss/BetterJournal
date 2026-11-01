@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.2 — 2026-11-01
+
+- Fix BetterJournal failing to replace the vanilla journal when an unrelated mod's language asset cannot be loaded, as reported with `stablesurface:lang/en.json`.
+- Read tapestry language metadata only from domains that provide loaded tapestry designs, matching the exact language file path.
+- Load optional lore and language metadata independently. Missing, unreadable, malformed or empty assets are skipped with a warning instead of interrupting reader setup.
+- Keep recovered journal entries readable if unexpected catalogue setup fails; optional fragment totals and tapestry metadata may be unavailable for that session.
+- Preserve the selected language's tapestry names with English fallback, mod-qualified names, and specific wildcard matching.
+- Add six regression checks for optional asset failures and language fallback; all 144 automated checks pass against Vintage Story 1.22.7.
+
 ## 0.1.1 — first public release
 
 - Replace the vanilla journal shortcut with a bookshelf and animated book reader.
